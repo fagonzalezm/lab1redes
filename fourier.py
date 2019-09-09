@@ -33,7 +33,18 @@ def c():
     error = []
     xSize = x.size
     i = 0
+    #aux = []
+    print(type(fourierInverse[0]))
     while i < xSize:
-        error.append((x[i]-fourierInverse[i])/x)
+        errorAux = abs((y[i]-fourierInverse[i].real)/y[i])
+        error.append(errorAux)
+        #aux.append(fourierInverse[i])
         i = i + 1
+    #aux2 = np.asarray(aux)
+    #waves.write("out.wav",frequency,aux2)
+    fourierInverse16Bit = np.asarray(fourierInverse, dtype=np.int16)
+    waves.write("out.wav",frequency, fourierInverse16Bit)
     plt.plot(error)
+    plt.show()
+
+c()
