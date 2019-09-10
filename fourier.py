@@ -6,11 +6,11 @@ from scipy.fftpack import ifft as ifft
 from scipy.fftpack import fftfreq as freq
 
 def a():
-    frequency, y = read.read()
+    frequency, y = waves.read('handel.wav')
     period = 1.0/frequency
     fourier = fft(y)
     frequencies = freq(len(y), period)
-    plt.plot(frequencies,fourier)
+    plt.plot(frequencies,abs(fourier))
     plt.show()
 
 def b():
@@ -34,7 +34,6 @@ def c():
     xSize = x.size
     i = 0
     #aux = []
-    print(type(fourierInverse[0]))
     while i < xSize:
         errorAux = abs((y[i]-fourierInverse[i].real)/y[i])
         error.append(errorAux)
