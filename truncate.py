@@ -78,7 +78,8 @@ def c():
         errorAux = abs((y[i]-fourierInverse[i].real)/y[i])
         error.append(errorAux)
         i = i + 1
-    plt.plot(error)
+    array = np.array(error)
+    plt.semilogy(abs(array))
     plt.ylabel("Error")
     plt.xlabel("Frecuencia")
     plt.title("Error Transformada de Fourier truncada")
