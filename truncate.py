@@ -37,7 +37,10 @@ def b():
             counter = counter + 1
     print(xSize/2)
     print(counter)
-    plt.plot(frequencies, fourier)  
+    plt.plot(frequencies, fourier)
+    plt.ylabel("Amplitud")
+    plt.xlabel("Frecuencia")
+    plt.title("Transformada de Fourier truncada")
     plt.show()
 
 def c():
@@ -67,6 +70,9 @@ def c():
         error.append(errorAux)
         i = i + 1
     plt.plot(error)
+    plt.ylabel("Error")
+    plt.xlabel("Frecuencia")
+    plt.title("Error Transformada de Fourier")
     plt.show()
     
-c()
+b()

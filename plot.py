@@ -8,5 +8,9 @@ def plot():
     end = y.size*period
     x = np.arange(0,end,period)
     plt.plot(x,y)
+    plt.ylabel("Amplitud")
+    plt.xlabel("Tiempo [s]")
+    plt.title("Señal de audio")
     plt.show()
     
+plot()
