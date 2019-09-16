@@ -41,14 +41,10 @@ def c():
     error = []
     xSize = x.size
     i = 0
-    #aux = []
     while i < xSize:
         errorAux = abs((y[i]-fourierInverse[i].real)/y[i])
         error.append(errorAux)
-        #aux.append(fourierInverse[i])
         i = i + 1
-    #aux2 = np.asarray(aux)
-    #waves.write("out.wav",frequency,aux2)
     fourierInverse16Bit = np.asarray(fourierInverse, dtype=np.int16)
     waves.write("out1.wav",frequency, fourierInverse16Bit)
     plt.plot(error)
@@ -57,5 +53,6 @@ def c():
     plt.title("Error Transformada de Fourier Inversa")
     plt.savefig("errorTransformadaDeFourierInversa.png")
     plt.show()
-
+a()
+b()
 c()

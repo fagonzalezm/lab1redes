@@ -53,13 +53,18 @@ def c():
     fourierInverse = ifft(fourier)
     frequencies = freq(len(y), period)
     xSize = x.size
+    print(np.mean(fourier))
     mean = np.mean(fourier)*4.88
     print(mean)
     i = 0
+    count = 0
     while i<xSize:
         if fourier[i] < mean:
             fourier[i] = 0
+        else:
+            count = count + 1
         i = i + 1
+    print(count)
 
     fourierInverse16Bit = np.asarray(fourierInverse, dtype=np.int16)
     waves.write("out2.wav",frequency, fourierInverse16Bit)
@@ -85,5 +90,7 @@ def c():
     plt.title("Error Transformada de Fourier truncada")
     plt.savefig("errorTransformadaDeFourierTruncada.png")
     plt.show()
-    
+
+a()
+b()
 c()
