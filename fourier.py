@@ -11,9 +11,10 @@ def a():
     fourier = fft(y)
     frequencies = freq(len(y), period)
     plt.plot(frequencies,abs(fourier))
-    plt.ylabel("Amplitud")
-    plt.xlabel("Frecuencia")
+    plt.ylabel("F(w)")
+    plt.xlabel("Frecuencia [Hz]")
     plt.title("Transformada de Fourier")
+    plt.savefig("transformadaDeFourier.png")
     plt.show()
 
 def b():
@@ -25,8 +26,9 @@ def b():
     fourierInverse = ifft(fourier)
     plt.plot(x,fourierInverse)
     plt.ylabel("Amplitud")
-    plt.xlabel("Frecuencia")
+    plt.xlabel("Tiempo [s]")
     plt.title("Transformada de Fourier Inversa")
+    plt.savefig("transformadaDeFourierInversa.png")
     plt.show()
 
 def c():
@@ -48,11 +50,12 @@ def c():
     #aux2 = np.asarray(aux)
     #waves.write("out.wav",frequency,aux2)
     fourierInverse16Bit = np.asarray(fourierInverse, dtype=np.int16)
-    waves.write("out.wav",frequency, fourierInverse16Bit)
+    waves.write("out1.wav",frequency, fourierInverse16Bit)
     plt.plot(error)
     plt.ylabel("Error")
     plt.xlabel("Frecuencia")
-    plt.title("Error Transformada de Fourier")
+    plt.title("Error Transformada de Fourier Inversa")
+    plt.savefig("errorTransformadaDeFourierInversa.png")
     plt.show()
 
 c()

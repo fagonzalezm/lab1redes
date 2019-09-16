@@ -38,9 +38,10 @@ def b():
     print(xSize/2)
     print(counter)
     plt.plot(frequencies, fourier)
-    plt.ylabel("Amplitud")
-    plt.xlabel("Frecuencia")
+    plt.ylabel("F(w)")
+    plt.xlabel("Frecuencia [Hz]")
     plt.title("Transformada de Fourier truncada")
+    plt.savefig("transformadaDeFourierTruncada.png")
     plt.show()
 
 def c():
@@ -53,6 +54,7 @@ def c():
     frequencies = freq(len(y), period)
     xSize = x.size
     mean = np.mean(fourier)*4.88
+    print(mean)
     i = 0
     while i<xSize:
         if fourier[i] < mean:
@@ -60,7 +62,14 @@ def c():
         i = i + 1
 
     fourierInverse16Bit = np.asarray(fourierInverse, dtype=np.int16)
-    waves.write("outTruncated3.wav",frequency, fourierInverse16Bit)
+    waves.write("out2.wav",frequency, fourierInverse16Bit)
+
+    plt.plot(x,fourierInverse16Bit)
+    plt.ylabel("Amplitud")
+    plt.xlabel("Tiempo [s]")
+    plt.title("Transformada de Fourier Inversa truncada")
+    plt.savefig("transformadaDeFourerInversaTruncada.png")
+    plt.show()
 
     error = []
     xSize = x.size
@@ -72,7 +81,8 @@ def c():
     plt.plot(error)
     plt.ylabel("Error")
     plt.xlabel("Frecuencia")
-    plt.title("Error Transformada de Fourier")
+    plt.title("Error Transformada de Fourier truncada")
+    plt.savefig("errorTransformadaDeFourierTruncada.png")
     plt.show()
     
-b()
+c()
